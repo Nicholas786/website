@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yayasan Rumah Bintang Indonesia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .slider-image {
+            transition: opacity 1s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center gap-2">
+                        <img src="gambar\Logo_Rumah-Bintang.png" alt="Logo Rumah Bintang" class="h-12 w-auto mr-2">
+                
+                    </div>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#beranda" class="text-gray-700 hover:text-blue-600 font-medium">Beranda</a>
+                    <a href="#tentang" class="text-gray-700 hover:text-blue-600 font-medium">Tentang Kami</a>
+                    <a href="#program" class="text-gray-700 hover:text-blue-600 font-medium">Program</a>
+                    <a href="#berita" class="text-gray-700 hover:text-blue-600 font-medium">Berita</a>
+                    <a href="donasi.html" class="bg-blue-600 text-white px-5 py-2 rounded-full font-medium hover:bg-blue-700 transition">Donasi Sekarang</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-700 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <a href="#beranda" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Beranda</a>
+            <a href="#tentang" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Tentang Kami</a>
+            <a href="#program" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Program</a>
+            <a href="donasi.html" class="block px-4 py-2 text-blue-600 font-bold">Donasi</a>
+        </div>
+    </nav>
+
+    <section id="beranda" class="relative h-[600px] flex items-center justify-center overflow-hidden pt-20">
+        <div class="slider-image absolute inset-0 w-full h-full object-cover bg-cover bg-center" 
+             style="background-image: url('gambar/slider-1.png'); opacity: 1;">
+            <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        </div>
+        
+        <div class="slider-image absolute inset-0 w-full h-full object-cover bg-cover bg-center" 
+             style="background-image: url('gambar/slider-2.png'); opacity: 0;">
+            <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        </div>
+        
+        <div class="slider-image absolute inset-0 w-full h-full object-cover bg-cover bg-center" 
+             style="background-image: url('gambar/slider-3.jpg'); opacity: 0;">
+            <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        </div>
+
+        <div class="relative z-10 text-center text-white px-4">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Mewujudkan Mimpi Anak Negeri</h1>
+            <p class="text-xl md:text-2xl mb-8 font-light">Bersama Yayasan Rumah Bintang Indonesia membangun generasi cerdas.</p>
+            
+            <a href="donasi.html" class="bg-yellow-500 text-gray-900 px-8 py-3 rounded-full font-bold hover:bg-yellow-400 transition transform hover:scale-105">Lihat Aksi Kami</a>
+        </div>
+    </section>
+
+    <section id="tentang" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2">
+                <img src="gambar/about-us.png" alt="Tentang Kami" class="rounded-lg shadow-xl">
+            </div>
+            <div class="md:w-1/2">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6 border-l-4 border-blue-600 pl-4">Siapa Kami?</h2>
+                <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                    Yayasan Rumah Bintang Indonesia adalah lembaga nirlaba yang berfokus pada pemberdayaan pendidikan dan kesejahteraan sosial. Sejak didirikan, kami berkomitmen menjadi jembatan kebaikan bagi mereka yang membutuhkan akses pendidikan yang layak.
+                </p>
+                <p class="text-gray-600 text-lg leading-relaxed">
+                    Kami percaya bahwa setiap anak memiliki bintang di dalam dirinya yang siap bersinar jika diberi kesempatan yang tepat.
+                </p>
+                <a href="#" class="inline-block mt-6 text-blue-600 font-semibold hover:underline">Baca Selengkapnya &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-blue-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-4xl font-bold text-yellow-400 mb-2">500+</div>
+                    <div class="text-sm uppercase tracking-widest opacity-80">Anak Asuh</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-yellow-400 mb-2">12</div>
+                    <div class="text-sm uppercase tracking-widest opacity-80">Kota Jangkauan</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-yellow-400 mb-2">50+</div>
+                    <div class="text-sm uppercase tracking-widest opacity-80">Program Sekolah</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-yellow-400 mb-2">1000+</div>
+                    <div class="text-sm uppercase tracking-widest opacity-80">Relawan</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="program" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900">Program Unggulan</h2>
+                <p class="mt-4 text-gray-600">Inisiatif nyata kami untuk perubahan yang berkelanjutan.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300">
+                    <img src="gambar\program-(P).jpg" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-blue-900">Beasiswa Bintang</h3>
+                        <p class="text-gray-600 mb-4">Pemberian bantuan biaya pendidikan penuh bagi siswa berprestasi dari keluarga prasejahtera.</p>
+                        <a href="payment.html?id=beasiswa" class="text-blue-600 font-semibold text-sm">Pelajari Detail</a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300">
+                    <img src="gambar\sembako-tunanetra.JPG" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-blue-900">Sumbangan Tunanetra</h3>
+                        <p class="text-gray-600 mb-4">Pemberian bantuan sembako dan pelatihan kemandirian bagi saudara kita penyandang disabilitas netra.</p>
+                        <a href="payment.html?id=tunanetra" class="text-blue-600 font-semibold text-sm">Pelajari Detail</a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300">
+                    <img src="gambar\PSAB.png" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-blue-900">Pengadaan Sarana Air Bersih</h3>
+                        <p class="text-gray-600 mb-4">Membangun sumur bor dan fasilitas sanitasi untuk desa-desa pelosok yang mengalami krisis air bersih.</p>
+                        <a href="payment.html?=air" class="text-blue-600 font-semibold text-sm">Pelajari Detail</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-gray-900 mb-12">Cerita Mereka</h2>
+            <div class="relative bg-blue-50 p-8 rounded-2xl">
+                <svg class="absolute top-4 left-4 w-10 h-10 text-blue-200" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.096 15.148 14.7459 16.666 13.926C16.891 13.805 17.065 13.63 17.143 13.414C17.221 13.197 17.202 12.956 17.091 12.756C16.792 12.218 16.147 11.889 15.421 11.889C13.528 11.889 12 10.361 12 8.468C12 6.575 13.528 5.047 15.421 5.047C17.314 5.047 18.842 6.575 18.842 8.468V9.609C18.842 13.256 17.189 16.657 14.364 18.667L14.017 21ZM5.017 21L5.017 18C5.017 16.096 6.148 14.7459 7.666 13.926C7.891 13.805 8.065 13.63 8.143 13.414C8.221 13.197 8.202 12.956 8.091 12.756C7.792 12.218 7.147 11.889 6.421 11.889C4.528 11.889 3 10.361 3 8.468C3 6.575 4.528 5.047 6.421 5.047C8.314 5.047 9.842 6.575 9.842 8.468V9.609C9.842 13.256 8.189 16.657 5.364 18.667L5.017 21Z"></path></svg>
+                <p class="text-xl italic text-gray-700 mb-6 relative z-10">"Berkat beasiswa dari Yayasan Rumah Bintang, saya bisa melanjutkan sekolah ke jenjang SMK dan sekarang sudah bekerja. Terima kasih telah menyalakan harapan saya."</p>
+                <div class="flex items-center justify-center gap-4">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-12 h-12 rounded-full border-2 border-blue-500">
+                    <div class="text-left">
+                        <div class="font-bold text-gray-900">Budi Santoso</div>
+                        <div class="text-sm text-gray-500">Alumni Penerima Manfaat, 2023</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="berita" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-end mb-10">
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-900">Kabar Yayasan</h2>
+                    <p class="mt-2 text-gray-600">Ikuti aktivitas terbaru kami setiap hari.</p>
+                </div>
+                <a href="#" class="hidden md:block text-blue-600 font-semibold hover:underline">Lihat Semua Berita</a>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <article class="bg-white p-4 rounded-lg shadow hover:shadow-md transition">
+                    <span class="text-xs font-bold text-blue-600 uppercase">16 Des 2025</span>
+                    <h3 class="font-bold text-lg mt-2 mb-2 line-clamp-2 hover:text-blue-600 cursor-pointer">Penyaluran 100 Paket Alat Tulis di Desa Sukamaju</h3>
+                    <p class="text-gray-500 text-sm line-clamp-3">Tim relawan bergerak pagi ini menyalurkan bantuan alat tulis untuk menyambut semester baru...</p>
+                </article>
+                <article class="bg-white p-4 rounded-lg shadow hover:shadow-md transition">
+                    <span class="text-xs font-bold text-blue-600 uppercase">15 Des 2025</span>
+                    <h3 class="font-bold text-lg mt-2 mb-2 line-clamp-2 hover:text-blue-600 cursor-pointer">Kunjungan Donatur dari PT Maju Bersama</h3>
+                    <p class="text-gray-500 text-sm line-clamp-3">Terima kasih kepada para donatur korporat yang telah menyempatkan diri melihat langsung...</p>
+                </article>
+                <article class="bg-white p-4 rounded-lg shadow hover:shadow-md transition">
+                    <span class="text-xs font-bold text-blue-600 uppercase">14 Des 2025</span>
+                    <h3 class="font-bold text-lg mt-2 mb-2 line-clamp-2 hover:text-blue-600 cursor-pointer">Pelatihan Digital Marketing untuk Ibu Asuh</h3>
+                    <p class="text-gray-500 text-sm line-clamp-3">Memberdayakan ekonomi keluarga, yayasan mengadakan workshop gratis...</p>
+                </article>
+                 <article class="bg-white p-4 rounded-lg shadow hover:shadow-md transition">
+                    <span class="text-xs font-bold text-blue-600 uppercase">13 Des 2025</span>
+                    <h3 class="font-bold text-lg mt-2 mb-2 line-clamp-2 hover:text-blue-600 cursor-pointer">Open Recruitment Relawan Batch 5</h3>
+                    <p class="text-gray-500 text-sm line-clamp-3">Kami memanggil anak muda yang memiliki jiwa sosial tinggi untuk bergabung...</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-300 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
+            <div class="col-span-1 md:col-span-2">
+                <h4 class="text-white text-xl font-bold mb-4">Yayasan Rumah Bintang</h4>
+                <p class="text-sm leading-relaxed mb-4 max-w-sm">Mewujudkan masa depan yang lebih cerah bagi anak-anak Indonesia melalui pendidikan dan pemberdayaan karakter.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Kontak</h4>
+                <ul class="space-y-2 text-sm">
+                    <li>Jl. Harapan Bangsa No. 123</li>
+                    <li>Jakarta Selatan, Indonesia</li>
+                    <li>info@rumahbintang.org</li>
+                    <li>+62 812 3456 7890</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Media Sosial</h4>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-white">Instagram</a>
+                    <a href="#" class="hover:text-white">Facebook</a>
+                    <a href="#" class="hover:text-white">YouTube</a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-sm">
+            &copy; 2025 Yayasan Rumah Bintang Indonesia. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        const slides = document.querySelectorAll('.slider-image');
+        let currentSlide = 0;
+
+        function nextSlide() {
+            slides[currentSlide].style.opacity = 0;
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].style.opacity = 1;
+        }
+
+        setInterval(nextSlide, 5000);
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donasi - Yayasan Rumah Bintang</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --brand-blue: #2563eb;      
+            --brand-dark: #1e3a8a;      
+            --brand-yellow: #eab308;     
+            --bg-light: #f9fafb;        
+            --text-gray: #4b5563;      
+            --spacing-md: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif; 
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .mobile-container {
+            width: 100%;
+            max-width: 480px;
+            background-color: #fff;
+            min-height: 100vh;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            padding-bottom: 100px; 
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--spacing-md);
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .logo-link {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            color: var(--brand-dark); 
+            font-size: 1rem;
+        }
+
+        .search-bar {
+            flex-grow: 1;
+            margin-left: 15px;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px 15px 10px 35px;
+            border-radius: 25px;
+            border: 1px solid #e5e7eb;
+            background-color: #f9fafb;
+            font-size: 0.85rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        .search-bar input:focus {
+            border-color: var(--brand-blue);
+        }
+
+        .search-bar i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+            font-size: 0.8rem;
+        }
+
+        .slider-container {
+            background: linear-gradient(135deg, var(--brand-blue), var(--brand-dark));
+            padding: 25px 0 50px 0; 
+            border-bottom-left-radius: 35px;
+            border-bottom-right-radius: 35px;
+            overflow: hidden;
+            position: relative;
+            
+            margin-bottom: 40px;
+        }
+
+        .slider-wrapper {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .slider-wrapper::-webkit-scrollbar { display: none; }
+
+        .slide-card {
+            flex: 0 0 100%; 
+            width: 100%;
+            scroll-snap-align: start;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 0 var(--spacing-md); 
+        }
+
+        .slide-content h2 {
+            font-size: 1.5rem;
+            line-height: 1.3;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .slide-content p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background-color: var(--brand-yellow); 
+            color: #1f2937;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+            margin-bottom: 20px;
+            width: fit-content;
+        }
+        .hero-btn:active { transform: scale(0.98); }
+
+        .slide-image {
+            width: 100%;
+            height: 180px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+        }
+        .dot {
+            width: 6px;
+            height: 6px;
+            background-color: rgba(255,255,255,0.4);
+            border-radius: 50%;
+        }
+        .dot.active {
+            background-color: #fff;
+            width: 20px;
+            border-radius: 10px;
+        }
+
+        .categories-section {
+            padding: 0 var(--spacing-md);
+            position: relative;
+            z-index: 10;
+            margin-top: -40px; 
+            margin-bottom: 30px;
+        }
+
+        .cat-card-wrapper {
+            background: white;
+            border-radius: 20px;
+            padding: 25px 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        .section-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--brand-dark);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            text-align: center;
+        }
+
+        .cat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--text-gray);
+        }
+
+        .cat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: transform 0.2s;
+            background-color: #eff6ff; 
+            color: var(--brand-blue);
+        }
+        
+        .cat-item:nth-child(1) .cat-icon { color: var(--brand-blue); background: #eff6ff; }
+        .cat-item:nth-child(2) .cat-icon { color: #db2777; background: #fce7f3; }
+        .cat-item:nth-child(3) .cat-icon { color: #0891b2; background: #cffafe; }
+        .cat-item:nth-child(4) .cat-icon { color: #ca8a04; background: #fef9c3; }
+
+        .cat-item:active .cat-icon { transform: scale(0.95); }
+
+        .cat-name {
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .bottom-cta-container {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 480px;
+            z-index: 99;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(255,255,255,1) 60%, rgba(255,255,255,0));
+        }
+
+        .donate-fab {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--brand-blue);
+            color: white;
+            width: 100%;
+            padding: 16px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+            transition: background-color 0.3s;
+        }
+        .donate-fab:hover { background-color: var(--brand-dark); }
+
+    </style>
+</head>
+<body>
+
+    <div class="mobile-container">
+        
+        <header>
+            <a href="index.html" class="logo-link">
+                <img src="gambar/Logo_Rumah-Bintang.png" alt="Logo" class="logo-img">
+                <span class="logo-text">Rumah Bintang</span>
+            </a>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Cari donasi...">
+            </div>
+        </header>
+
+        <section class="slider-container">
+            <div class="slider-wrapper">
+                
+                <div class="slide-card">
+                    <div class="slide-content">
+                        <h2>Beasiswa Bintang</h2>
+                        <p>Wujudkan mimpi anak negeri dengan pendidikan layak.</p>
+                        <a href="payment.html?id=beasiswa" class="hero-btn">Donasi Pendidikan</a>
+                    </div>
+                    <div class="slide-image" style="background-image: url('gambar/program-(P).jpg');"></div>
+                </div>
+
+                <div class="slide-card">
+                    <div class="slide-content">
+                        <h2>Air Bersih Pelosok</h2>
+                        <p>Alirkan kebaikan melalui sarana air bersih desa.</p>
+                        <a href="payment.html?id=air" class="hero-btn">Sedekah Air</a>
+                    </div>
+                    <div class="slide-image" style="background-image: url('gambar/PSAB.png');"></div>
+                </div>
+
+                <div class="slide-card">
+                    <div class="slide-content">
+                        <h2>Bantuan Tunanetra</h2>
+                        <p>Cahaya harapan bagi saudara penyandang disabilitas.</p>
+                        <a href="payment.html?id=tunanetra" class="hero-btn">Bantu Sekarang</a>
+                    </div>
+                    <div class="slide-image" style="background-image: url('gambar/sembako-tunanetra.JPG');"></div>
+                </div>
+
+            </div>
+
+            <div class="slider-dots">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </section>
+
+        <section class="categories-section">
+            <div class="cat-card-wrapper">
+                <h3 class="section-title">Mau bantu apa hari ini?</h3>
+                <div class="category-grid">
+                    <a href="#" class="cat-item">
+                        <div class="cat-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <span class="cat-name">Beasiswa</span>
+                    </a>
+                    <a href="#" class="cat-item">
+                        <div class="cat-icon">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <span class="cat-name">Sosial</span>
+                    </a>
+                    <a href="#" class="cat-item">
+                        <div class="cat-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <span class="cat-name">Air</span>
+                    </a>
+                    <a href="#" class="cat-item">
+                        <div class="cat-icon">
+                            <i class="fas fa-mosque"></i>
+                        </div>
+                        <span class="cat-name">Zakat</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section style="padding: 20px; text-align: center; color: #9ca3af; font-size: 0.9rem;">
+            <p style="margin-bottom: 10px;">Pilih program kebaikanmu dan mulailah berbagi.</p>
+            <p>--- Yayasan Rumah Bintang Indonesia ---</p>
+        </section>
+
+    </div> 
+
+    <div class="bottom-cta-container">
+        <a href="payment.html" class="donate-fab">
+            <i class="fas fa-heart" style="margin-right: 12px;"></i> Donasi Sekarang
+        </a>
+    </div>
+<script>
+    const slider = document.querySelector('.slider-wrapper');
+    const dots = document.querySelectorAll('.dot');
+    const totalSlides = dots.length;
+    let slideInterval;
+
+    function updateDots() {
+        const scrollPosition = slider.scrollLeft;
+        const cardWidth = slider.offsetWidth;
+        const currentIndex = Math.round(scrollPosition / cardWidth);
+
+        dots.forEach((dot, index) => {
+            if (index === currentIndex) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+    }
+
+    slider.addEventListener('scroll', updateDots);
+
+    function autoSlide() {
+        const cardWidth = slider.offsetWidth;
+        const currentScroll = slider.scrollLeft;
+        
+        let nextIndex = Math.round(currentScroll / cardWidth) + 1;
+        if (nextIndex >= totalSlides) {
+            nextIndex = 0;
+        }
+
+        slider.scrollTo({
+            left: nextIndex * cardWidth,
+            behavior: 'smooth'
+        });
+    }
+
+    slideInterval = setInterval(autoSlide, 3000);
+    slider.addEventListener('touchstart', () => clearInterval(slideInterval));
+    slider.addEventListener('touchend', () => slideInterval = setInterval(autoSlide, 3000));
+</script>
+</body>
+</html>

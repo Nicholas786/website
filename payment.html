@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembayaran - Rumah Bintang</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --brand-blue: #2563eb;
+            --brand-dark: #1e3a8a;
+            --brand-yellow: #eab308;
+            --bg-light: #f3f4f6;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        body { background-color: var(--bg-light); display: flex; justify-content: center; min-height: 100vh; }
+
+        .mobile-container {
+            width: 100%; max-width: 480px; background-color: #fff; min-height: 100vh; position: relative;
+            padding-bottom: 100px; display: flex; flex-direction: column;
+        }
+
+        header {
+            display: flex; align-items: center; padding: 20px; background: #fff;
+            border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100;
+        }
+        .back-btn { font-size: 1.2rem; color: #333; margin-right: 15px; cursor: pointer; text-decoration: none; }
+        .header-title { font-weight: 700; font-size: 1.1rem; color: var(--brand-dark); }
+
+        .content { padding: 20px; }
+
+        .program-info {
+            display: flex; gap: 15px; padding: 15px; background: #eff6ff; border-radius: 12px; margin-bottom: 25px; align-items: center; border: 1px solid #dbeafe;
+        }
+        .program-thumb { width: 60px; height: 60px; background-color: #ddd; border-radius: 8px; object-fit: cover; }
+        .program-text h3 { font-size: 0.95rem; color: var(--brand-dark); margin-bottom: 5px; font-weight: 700; }
+        .program-text p { font-size: 0.8rem; color: var(--brand-blue); font-weight: 600; }
+
+        .section-label { font-size: 0.9rem; font-weight: 600; margin-bottom: 10px; color: #374151; }
+        .nominal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+        .nominal-btn {
+            padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; background: #fff;
+            font-weight: 600; color: #374151; cursor: pointer; transition: all 0.2s;
+        }
+        .nominal-btn.active { border-color: var(--brand-blue); background-color: #eff6ff; color: var(--brand-blue); }
+
+        .input-nominal {
+            width: 100%; padding: 15px; border: 1px solid #d1d5db; border-radius: 10px; font-size: 1rem; margin-bottom: 30px;
+        }
+        .input-nominal:focus { outline: none; border-color: var(--brand-blue); }
+
+        .form-group { margin-bottom: 20px; }
+        .form-input {
+            width: 100%; padding: 12px 15px; border: 1px solid #d1d5db; border-radius: 10px; font-size: 0.95rem; background: #f9fafb;
+        }
+
+        .payment-method { border: 1px solid #e5e7eb; border-radius: 10px; overflow: hidden; margin-bottom: 30px; }
+        .method-item { display: flex; align-items: center; padding: 15px; border-bottom: 1px solid #f3f4f6; cursor: pointer; }
+        .method-item:last-child { border-bottom: none; }
+        .method-icon { width: 40px; margin-right: 15px; text-align: center; }
+
+        .bottom-bar {
+            position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 480px;
+            background: #fff; padding: 20px; border-top: 1px solid #eee; box-shadow: 0 -5px 20px rgba(0,0,0,0.05); z-index: 99;
+        }
+        .pay-btn {
+            display: block; width: 100%; background-color: var(--brand-yellow); color: #1f2937; text-align: center;
+            padding: 15px; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 1rem; border: none; cursor: pointer;
+        }
+
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6); z-index: 1000; display: none; align-items: center; justify-content: center;
+        }
+        .modal-content {
+            background: white; width: 90%; max-width: 400px; padding: 30px 20px; border-radius: 20px;
+            text-align: center; animation: popUp 0.3s ease-out;
+        }
+        .success-icon {
+            width: 80px; height: 80px; background: #dcfce7; color: #16a34a;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 2.5rem; margin: 0 auto 20px auto;
+        }
+        .modal-title { font-size: 1.2rem; font-weight: 700; color: #1f2937; margin-bottom: 10px; }
+        .modal-desc { font-size: 0.9rem; color: #6b7280; margin-bottom: 25px; line-height: 1.5; }
+        .modal-btn {
+            background: var(--brand-blue); color: white; padding: 12px 30px; border-radius: 50px;
+            text-decoration: none; font-weight: 600; display: inline-block; width: 100%;
+        }
+
+        @keyframes popUp {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mobile-container">
+        <header>
+            <a href="donasi.html" class="back-btn"><i class="fas fa-arrow-left"></i></a>
+            <span class="header-title">Isi Detail Donasi</span>
+        </header>
+
+        <div class="content">
+            <div class="program-info">
+                <img id="prog-img" src="" class="program-thumb" alt="Program">
+                <div class="program-text">
+                    <h3 id="prog-title">Memuat Program...</h3>
+                    <p id="prog-desc">Yayasan Rumah Bintang</p>
+                </div>
+            </div>
+
+            <div class="section-label">Pilih Nominal Donasi</div>
+            <div class="nominal-grid">
+                <button class="nominal-btn" onclick="pilihNominal(this)">Rp 10.000</button>
+                <button class="nominal-btn active" onclick="pilihNominal(this)">Rp 50.000</button>
+                <button class="nominal-btn" onclick="pilihNominal(this)">Rp 100.000</button>
+                <button class="nominal-btn" onclick="pilihNominal(this)">Rp 250.000</button>
+            </div>
+            <input type="number" class="input-nominal" placeholder="Nominal Lainnya (Rp)">
+
+            <div class="section-label">Data Donatur</div>
+            <div class="form-group"><input type="text" class="form-input" placeholder="Nama Lengkap"></div>
+            <div class="form-group"><input type="text" class="form-input" placeholder="Nomor WhatsApp / Email"></div>
+
+            <div class="section-label">Metode Pembayaran</div>
+            <div class="payment-method">
+                <label class="method-item">
+                    <i class="fas fa-qrcode method-icon" style="color: #333;"></i>
+                    <span class="method-name">QRIS (Gopay/OVO/Dana)</span>
+                    <input type="radio" name="payment" checked>
+                </label>
+                <label class="method-item">
+                    <i class="fas fa-university method-icon" style="color: #2563eb;"></i>
+                    <span class="method-name">Transfer Bank (BCA/Mandiri)</span>
+                    <input type="radio" name="payment">
+                </label>
+            </div>
+        </div>
+
+        <div class="bottom-bar">
+            <button class="pay-btn" onclick="tampilkanModal()">Lanjut Pembayaran</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="successModal">
+        <div class="modal-content">
+            <div class="success-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h3 class="modal-title">Donasi Berhasil!</h3>
+            <p class="modal-desc">Terima kasih, Orang Baik! Donasimu untuk program <b id="modal-prog-name">...</b> telah kami terima.</p>
+            <a href="index.html" class="modal-btn">Kembali ke Beranda</a>
+        </div>
+    </div>
+
+    <script>
+        const dataProgram = {
+            'beasiswa': {
+                title: "Beasiswa Bintang",
+                img: "gambar/program-(P).jpg",
+                desc: "Pendidikan Anak Prasejahtera"
+            },
+            'air': {
+                title: "Pengadaan Sarana Air Bersih",
+                img: "gambar/PSAB.png",
+                desc: "Sedekah Jariyah Air"
+            },
+            'tunanetra': {
+                title: "Sumbangan Tunanetra",
+                img: "gambar/sembako-tunanetra.JPG",
+                desc: "Bantuan Disabilitas Netra"
+            },
+            'umum': {
+                title: "Donasi Program Yayasan",
+                img: "gambar/Logo_Rumah-Bintang.png",
+                desc: "Operasional & Pengembangan"
+            }
+        };
+
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const programId = urlParams.get('id');
+            const selectedProgram = dataProgram[programId] || dataProgram['umum'];
+
+            document.getElementById('prog-title').innerText = selectedProgram.title;
+            document.getElementById('prog-desc').innerText = selectedProgram.desc;
+            document.getElementById('prog-img').src = selectedProgram.img;
+            document.getElementById('modal-prog-name').innerText = selectedProgram.title;
+        };
+
+        function pilihNominal(element) {
+            document.querySelectorAll('.nominal-btn').forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        function tampilkanModal() {
+            document.getElementById('successModal').style.display = 'flex';
+        }
+    </script>
+
+</body>
+</html>
